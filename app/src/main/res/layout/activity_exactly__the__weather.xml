@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/black">
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Здесь должен отображаться город, если его нет - зовите фиксиков."
+        android:textColor="@color/regular_text_yellow"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/time_daylong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Долгота дня: "
+        android:textColor="@color/regular_text_yellow"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/time_sunrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Время восхода: "
+        android:textColor="@color/regular_text_yellow"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/time_sunset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Время захода: "
+        android:textColor="@color/regular_text_yellow"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/regular_text_yellow"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/windSide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/regular_text_yellow"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/humadity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/regular_text_yellow"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/presure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/regular_text_yellow"
+        android:textSize="24sp" />
+</LinearLayout>
