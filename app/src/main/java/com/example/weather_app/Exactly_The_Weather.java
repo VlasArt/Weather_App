@@ -9,6 +9,8 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Exactly_The_Weather extends AppCompatActivity {
@@ -65,8 +67,8 @@ public class Exactly_The_Weather extends AppCompatActivity {
             openWeatherMap.normalize();
             city.setText(openWeatherMap.name);
             time_daylong.setText("Продолжительнооть дня: " + getTime(Math.abs(openWeatherMap.sys.sunrise - openWeatherMap.sys.sunset)));
-            time_sunrise.setText("Время восхода: " + getTime(openWeatherMap.sys.sunrise));
-            time_sunset.setText("Время захода: " + getTime(openWeatherMap.sys.sunset));
+            time_sunrise.setText("Время восхода: " + getDate(openWeatherMap.sys.sunrise));
+            time_sunset.setText("Время захода: " + getDate(openWeatherMap.sys.sunset));
             temperature.setText("Температура: " + openWeatherMap.main.temp + "°C");
             windSide.setText("Направление ветра: " + getWindDirection(openWeatherMap.wind.deg,openWeatherMap.wind.speed));
             humadity.setText("Влажность: " + openWeatherMap.main.humidity + "%");
@@ -135,6 +137,12 @@ public class Exactly_The_Weather extends AppCompatActivity {
                 hr = Integer.toString(hours);
             }
             return hr + ":" + min;
+        }
+
+        protected String getDate(int value){
+            Date date = new Date(value * 1000);
+            SimpleDateFormat sfd = new SimpleDateFormat("HH:mm");
+            return sfd.format(date);
         }
     }
 }
