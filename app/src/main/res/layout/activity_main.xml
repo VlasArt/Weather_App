@@ -8,12 +8,26 @@
     android:background="@android:color/black">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/showWeatherByID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:onClick="ShowWether"
         android:text="Show me fucking weather"
+        android:textColor="@color/regular_text_yellow" />
+
+    <ListView
+        android:id="@+id/citiesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"></ListView>
+
+    <Button
+        android:id="@+id/showDefultWeatherBy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:onClick="ShowDefultWether"
+        android:text="Show me defult weather"
         android:textColor="@color/regular_text_yellow" />
 
 </LinearLayout>

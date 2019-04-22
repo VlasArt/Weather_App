@@ -1,5 +1,6 @@
 package com.example.weather_app;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import java.util.Scanner;
 
 public class Exactly_The_Weather extends AppCompatActivity {
     TextView city,time_daylong,time_sunrise,time_sunset,temperature,windSide,humadity,presure;
+    String cityID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +25,13 @@ public class Exactly_The_Weather extends AppCompatActivity {
 
         init();
 
+        Intent intent = getIntent();
+        cityID = intent.getStringExtra("cityID");
+
         GetWaetherTask task = new GetWaetherTask();
+        Log.d("myTeg", "res - ");
         task.execute();
+        Log.d("myTeg", "res - ");
     }
 
     void init(){
@@ -44,17 +51,17 @@ public class Exactly_The_Weather extends AppCompatActivity {
         @Override
         protected OpenWeatherMap doInBackground(Integer... integers) {
             String result = "";
-
+            Log.d("myTeg", "res - " + result);
             try {
-                URL url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + "2023469" + "&appid=" + ApiKey);//integers[0] + "&appid=" + ApiKey);
+                URL url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + cityID + "&appid=" + ApiKey);//integers[0] + "&appid=" + ApiKey);
                 Scanner in = new Scanner((InputStream) url.getContent());
-
+                Log.d("myTeg", "res - " + result);
                 while (in.hasNext()) {
                     result += in.nextLine();
                 }
+                Log.d("myTeg", "res - " + result);
                 Gson gson = new Gson();
                 if (result.length() > 0) {
-                    Log.d("mytag", result);
                     OpenWeatherMap owm = gson.fromJson(result, OpenWeatherMap.class);
                     return owm;
                 }
