@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         String[] fields = {"_id", "name", "country"};
         int[] resIds = {R.id.id, R.id.city_name, R.id.country};
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.item, cursor, fields, resIds,0);
+        citiesList.setAdapter(adapter);
     }
 
     public void ShowWeather(View view){
