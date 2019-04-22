@@ -103,8 +103,14 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (IOException e){
             } catch (JSONException je){}
-            upgradeCities();
+
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            upgradeCities();
         }
     }
 }
