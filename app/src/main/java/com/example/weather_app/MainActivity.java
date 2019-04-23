@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -49,13 +50,19 @@ public class MainActivity extends AppCompatActivity {
         dbHelper= new DBHelper(this);
         db = dbHelper.getWritableDatabase();
 
-        upgradeCities();
+        upgradeCities(false);
         GetCities task = new GetCities();
         task.execute();
     }
 
-    private void upgradeCities(){
-        Cursor cursor = db.rawQuery("SELECT * FROM cities;", null);
+    private void upgradeCities(boolean withParam){
+        String sortingString = "ORDER BY country, name, _id ASC LIMIT 15;";
+        if (withParam){
+            EditText searchEdit = findViewById(R.id.search_text);
+            String searchString = searchEdit.getText().toString();
+            sortingString = "WHERE (name like \"%" + searchString + "%\") " + sortingString;
+        }
+        Cursor cursor = db.rawQuery("SELECT * FROM cities " + sortingString, null);
         String[] fields = {"_id", "name", "country"};
         int[] resIds = {R.id.id, R.id.city_name, R.id.country};
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.item, cursor, fields, resIds,0);
@@ -75,6 +82,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Exactly_The_Weather.class);
         intent.putExtra("cityID", "2023469");
         startActivity(intent);
+    }
+
+    public void searchCityes(View view){
+        upgradeCities(true);
+    }
+
+    public void cancelSearch(View view){
+        upgradeCities(false);
     }
 
     class GetCities extends AsyncTask<Void,Void,Void>{
@@ -110,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            upgradeCities();
+            upgradeCities(false);
         }
     }
 }

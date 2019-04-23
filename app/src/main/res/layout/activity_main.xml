@@ -7,27 +7,51 @@
     android:orientation="vertical"
     android:background="@android:color/black">
 
-    <Button
-        android:id="@+id/showWeatherByID"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="Show me fucking weather"
-        android:textColor="@color/regular_text_yellow" />
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="8">
+
+            <EditText
+                android:id="@+id/search_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/regular_text_yellow"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/b_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:onClick="searchCityes"
+            android:text="🔍"
+            android:textColor="@color/regular_text_yellow" />
+
+        <Button
+            android:id="@+id/b_cancelSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:onClick="cancelSearch"
+            android:text="X"
+            android:textColor="@color/regular_text_yellow" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/citiesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"></ListView>
-
-    <Button
-        android:id="@+id/showDefultWeatherBy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:onClick="ShowDefultWether"
-        android:text="Show me defult weather"
-        android:textColor="@color/regular_text_yellow" />
 
 </LinearLayout>
